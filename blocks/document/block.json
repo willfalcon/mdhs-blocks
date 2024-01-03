@@ -1,0 +1,23 @@
+{
+  "name": "cdhq/document",
+  "title": "Document",
+  "style": "document-style",
+  "category": "cdhq",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "document.php"
+  },
+  "supports": {
+    "align": true
+  },
+  "align": "full",
+  "icon": "pdf",
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "document": 16927
+      }
+    }
+  }
+}

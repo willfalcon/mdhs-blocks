@@ -1,0 +1,16 @@
+{
+  "name": "cdhq/news-categories",
+  "title": "News Categories",
+  "category": "cdhq",
+  "editorScript": "news-categories-editor-script",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "news-categories.php"
+  },
+  "supports": {
+    "align": false
+  },
+  "align": "full",
+  "icon": "list-view",
+  "example": {}
+}

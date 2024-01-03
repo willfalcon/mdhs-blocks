@@ -1,0 +1,42 @@
+@import '../block-import';
+
+.stat-block {
+  background: $green;
+  display: grid;
+  grid-template-columns: 75px 1fr;
+  grid-template-rows: repeat(3, auto);
+  column-gap: 1rem;
+  padding: 1rem 2rem;
+  color: white;
+  align-items: center;
+  border-radius: 9px;
+  margin-bottom: 2rem;
+  &__icon {
+    grid-row: 1 / 4;
+    grid-column: 1 / 2;
+    width: 75px;
+    height: 75px;
+    fill: white;
+  }
+  &__label {
+    margin: 0;
+    text-align: center;
+    text-wrap: balance;  
+  }
+  &__before {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+  }
+  &__stat {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    color: $light-blue;
+    font-size: 60px;
+    font-weight: $fw-medium;
+    text-align: center;
+  }
+  &__after {
+    grid-row: 3/ 4;
+    grid-column: 2 / 3;
+  }
+}

@@ -1,0 +1,155 @@
+@import '../block-import';
+.archive {
+
+  .hero {
+    .page-content & {
+      width: 100%;
+      padding-bottom: 2rem;
+      padding: 0;
+      padding-bottom: 2rem;
+    }
+    width: 100%; 
+    background: $cobalt;
+    padding-bottom: 2rem; 
+    @include responsive {
+      padding: 0 1rem;
+    }
+    &__image {
+      margin: 0 auto 2rem;
+      transform: translateY(-1.5rem);
+    }
+    &__heading {
+      text-align: center;
+      color: white;
+      @include content-width;
+      // color: inherit;
+      font-weight: $fw-medium;
+      font-size: 2.6rem;
+      margin: 0;
+      text-wrap: balance;
+      @include responsive {
+        margin: 0 auto;
+      }
+    }
+  }
+
+}
+.posts-heading {
+  padding: 0 1rem;
+  margin-top: 2rem;
+  @include responsive {
+    @include content-width;
+  }
+}
+.stories-list,
+.results-list {
+  // padding: 0 1rem;
+  container-type: inline-size; 
+  .post {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: auto 1fr auto auto;
+    gap: 1rem; 
+    border-bottom: 1px solid $blue;
+    text-decoration: none;
+    color: black;
+    grid-template-areas:
+    "date image"
+    "title image"
+    "excerpt image"
+    "more image";
+    &.no-image {
+      grid-template-areas:
+      "date date"
+      "title title"
+      "excerpt excerpt"
+      "more more";
+    }
+    padding: 1rem 0;
+    @container (min-width: 768px) {
+      grid-template-columns: 1fr 300px;
+      padding: 2.5rem 0; 
+    }
+    &:hover {
+      text-decoration: none;
+    }
+    &__date {
+      grid-area: date;
+      color: $bright-blue;
+      font-weight: $fw-bold;
+      font-size: 1.4rem;
+      @include responsive {
+        font-size: 1.8rem;
+      }
+    }
+    &__title {
+      grid-area: title;
+      font-size: 2.2rem;
+      margin: 0;
+      @include responsive {
+        font-size: 2.2rem;
+      }
+    }
+    &__excerpt {
+      grid-area: excerpt;
+    }
+    &__read-more {
+      grid-area: more;
+      font-size: 1.8rem;
+      color: $orange;
+      font-weight: $fw-bold;
+      display: flex;
+      align-items: center;
+      @include responsive {
+        font-size: 1.9rem;
+      }
+      svg {
+        margin-left: 5px;
+      }
+      &::after {
+        display: none;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        font-family: "Font Awesome 5 Free"; 
+        font-weight: 900; 
+        content: "\f0da";
+
+      }
+    }
+    &__image-wrapper {
+      grid-area: image;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+  }
+}
+
+.layout-columns {
+  display: flex;
+  @include content-width;
+  flex-wrap: wrap;
+  align-items: normal;
+  gap: 2em;
+  @include responsive {
+    flex-wrap: nowrap;
+  }
+}
+
+.layout-column {
+  flex-grow: 1;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  @include responsive {
+    flex-grow: 0
+  }
+}
+.layout-column-main {
+  flex-basis: 66.66%;
+}
+
+.layout-column-aside {
+  flex-basis: 33.33%;
+}

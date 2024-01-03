@@ -1,0 +1,49 @@
+{
+  "name": "cdhq/icon-links",
+  "title": "Icon Links",
+  "style": "icon-links-style",
+  "editorStyle": "icon-links-editor-style",
+  "category": "cdhq",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "icon-links.php"
+  },
+  "supports": {
+    "align": true
+  },
+  "align": "full",
+  "icon": "image-filter",
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data":{
+        "field_641376a05c2f2": [
+          {
+            "field_641376b35c2f3": "caution",
+            "field_641376ce5c2f4": {
+              "title": "Report Fraud",
+              "url": "/",
+              "target": ""
+            }
+          },
+          {
+            "field_641376b35c2f3": "handshake",
+            "field_641376ce5c2f4": {
+              "title": "Partner Resources",
+              "url": "/",
+              "target": ""
+            }
+          },
+          {
+            "field_641376b35c2f3": "pen-paper",
+            "field_641376ce5c2f4": {
+              "title": "Reports and Records",
+              "url": "/",
+              "target": ""
+            }
+          }
+        ]
+      }
+    }
+  }
+}

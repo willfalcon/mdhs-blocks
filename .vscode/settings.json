@@ -1,0 +1,11 @@
+{
+  "workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#fff",
+    "titleBar.inactiveForeground": "#ffffffCC",
+    "titleBar.activeBackground": "#485939",
+    "titleBar.inactiveBackground": "#828f75"
+  },
+  "cSpell.words": [
+    "MDHS"
+  ]
+}

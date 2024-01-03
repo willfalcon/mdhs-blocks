@@ -1,0 +1,95 @@
+@import '../block-import';
+
+.document {
+  
+  width: 232px;
+  // height: 300px;
+  max-width: 100%;
+  aspect-ratio: 8.5 / 11;
+  border: 3px solid $slate;
+  border-radius: 5px;
+  position: relative;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  .wp-block-columns:first-child & {
+    margin-top: 0;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: $slate;
+    border-width: 20px;
+    border-style: solid;
+    border-bottom-color: white;
+    border-left-color: white;
+    z-index: 1;
+  }
+  &--placeholder {
+    @extend .document;
+    // margin-bottom: 2rem;
+    .document {
+      &__title {
+        color: $slate;
+        bottom: initial;
+        top: 50%;
+        transform: translateY(-50%);
+        
+      }
+    }
+  }
+
+  &__image-wrapper {
+    position: relative;
+    height: 100%;
+    &::after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      position: absolute;
+      
+      background-image: linear-gradient(to bottom, rgba($slate, 0), rgba($slate, .8));
+      z-index: 2;
+    }
+    img {
+      height: 100%;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    position: relative;
+    height: 100%;
+    display: block;
+    &:hover {
+      text-decoration: none;
+      .document__title {
+        text-decoration: underline;
+      }
+    }
+  }
+
+
+  &__title {
+    color: $cobalt;
+    font-size: 1.6rem;
+    font-weight: $fw-medium;
+    margin: .5rem 0;
+    display: block;
+    padding: 1rem;
+    position: absolute;
+    bottom: 0;
+
+    text-align: center;
+    left: 0;
+    color: white;
+    z-index: 2;
+    
+  }
+}

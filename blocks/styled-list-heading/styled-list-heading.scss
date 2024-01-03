@@ -1,0 +1,25 @@
+@import '../block-import';
+
+.styled-list-heading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: $teal;
+  transform: translate(-20px);
+  &__number {
+    width: 70px;
+    height: 70px;
+    flex: 0 0 70px;
+    background: $light-green;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 5.5rem;
+    transform: translateX(20px);
+    z-index: -1;
+    position: relative;
+  }
+  
+}

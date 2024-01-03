@@ -1,0 +1,23 @@
+.wp-block {
+  .related {
+  .related {
+    &__heading {
+      
+        font-size: 28px; 
+        padding: 12px 30px;
+        margin: 0;
+        color: black;
+    }
+    &__link {
+      text-decoration: none;
+    }
+
+    &__items {
+      padding: 0 30px 13px;
+    }
+    &__item {
+      margin: 0;
+    }
+  }
+}
+}

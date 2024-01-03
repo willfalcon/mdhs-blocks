@@ -1,0 +1,14 @@
+@import '../block-import';
+
+.phone-button {
+  &__link {
+    display: inline-flex;
+    align-items: center;
+  }
+  &__icon {
+    width: 30px;
+    height: 30px;
+    fill: white;
+    margin-right: 10px;
+  }
+}

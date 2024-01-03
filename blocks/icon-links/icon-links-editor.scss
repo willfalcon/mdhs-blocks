@@ -1,0 +1,22 @@
+@import '../block-import';
+
+
+.icon-links {
+  &__link {
+    font-size: 20px;
+    .wp-block & {
+      text-decoration: none;
+    }
+    flex-basis: 250px;
+  }
+  &.is-preview {
+    display: flex;
+    .icon-links {
+      &__link {
+      }
+      &__label {
+        font-weight: $fw-medium;   
+      }
+    }
+  }
+}

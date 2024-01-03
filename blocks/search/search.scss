@@ -1,0 +1,46 @@
+@import '../block-import';
+
+.search, .searchform {
+  background: $lightest-blue;
+  .page-content > & {
+    padding: 2rem !important;
+  }
+  &__heading {
+    color: $cobalt;
+    text-align: center;
+    font-weight: $fw-medium;
+    text-transform: none;
+  }
+  $size: 50px;
+  &__form {
+    @include content-width(700px);
+    display: flex;
+    height: $size;
+  }
+
+  &__input {
+    flex: 1;
+    border: 0;
+    font-weight: $fw-medium;
+    color: $dark;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding: .5rem 1rem;
+    &::placeholder {
+      color: $dark;
+    }
+  }
+
+  &__submit {
+    flex: 0 0 $size;
+    background: $bright-blue;
+    border: 0;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    svg {
+      width: $size - 20px;
+      height: $size - 20px;
+      fill: white;
+    }
+  }
+}

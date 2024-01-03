@@ -1,0 +1,26 @@
+{
+  "name": "cdhq/report-block",
+  "title": "Report",
+  "style": "report-block-style",
+  "editorStyle": "report-block-editor-style",
+  "script": "report-block-script",
+  "category": "cdhq",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "report-block.php"
+  },
+  "supports": {
+    "align": true
+  },
+  "align": "full",
+  "icon": "pdf",
+  "example":{
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "field_64ef935a7b6aa": 15786,
+        "field_64ff7b773f1ee": "Previous"
+      }
+    }
+  }
+}

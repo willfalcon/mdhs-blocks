@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "name": "cdhq/accordion",
+  "title": "Accordion",
+  "style": "accordion-style",
+  "editorStyle": "accordion-editor-style",
+  "script": "expander-script",
+  "category": "cdhq",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "accordion.php"
+  },
+  "supports": {
+    "align": true,
+    "jsx": true,
+    "color": {
+      "text": false
+    }
+  },
+  "attributes": {
+    "backgroundColor": {
+      "type": "string",
+      "default": "light-blue"
+    },
+    "align": {
+      "type": "string",
+      "default": "full"
+    }
+  },
+  "icon": "excerpt-view",
+  "styles": [
+    {
+      "name": "default",
+      "label": "Style 1",
+      "isDefault": true
+    },
+    {
+      "name": "alt",
+      "label": "Style 2"
+    }
+  ]
+}

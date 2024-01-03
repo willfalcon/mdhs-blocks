@@ -1,0 +1,16 @@
+{
+  "name": "cdhq/sharepoint-list",
+  "title": "Sharepoint List",
+  "style": ["sharepoint-list-style", "tabulator-style"],
+  "viewScript": ["luxon", "sharepoint-list-script"],
+  "category": "cdhq",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "sharepoint-list.php"
+  },
+  "supports": {
+    "align": true
+  },
+  "align": "full",
+  "icon": "media-spreadsheet"
+}

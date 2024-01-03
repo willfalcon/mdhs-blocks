@@ -1,0 +1,50 @@
+{
+  "name": "cdhq/quick-access",
+  "title": "Quick Access",
+  "style": "quick-access-style",
+  "editorStyle": "quick-access-editor-style",
+  "script": "quick-access-script",
+  "category": "cdhq",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "quick-access.php"
+  },
+  "supports": {
+    "align": false
+  },
+  "align": "full",
+  "icon": "image-flip-horizontal",
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "field_6411e64f9c733": [
+          {
+            "field_6411e6759c734": 16593,
+            "field_6411e67e9c735": "Food",
+            "field_6411e68b9c736": {
+              "title": "Food",
+              "url": "/"
+            }
+          },
+          {
+            "field_6411e6759c734": 16529,
+            "field_6411e67e9c735": "Getting a Job",
+            "field_6411e68b9c736": {
+              "title": "Getting a Job",
+              "url": "/"
+            }
+          },
+          {
+            "field_6411e6759c734": 16530,
+            "field_6411e67e9c735": "Child Care",
+            "field_6411e68b9c736": {
+              "title": "Child Care",
+              "url": "/"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

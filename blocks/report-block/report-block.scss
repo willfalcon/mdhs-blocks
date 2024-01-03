@@ -1,0 +1,83 @@
+@import '../block-import';
+
+.report-block {
+  border: 1px solid $bright-blue;
+  width: 500px;
+  padding-bottom: 1rem;
+  &__title {
+    font-weight: $fw-regular;
+    color: $cobalt;
+    font-size: 2.4rem;
+  }
+
+  &__latest { 
+    
+    background: $mint;
+    padding: 1rem;
+  }
+
+  .report {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    a {
+      text-decoration: none;
+      font-weight: $fw-medium;
+      color: black;
+    }
+    &__download {
+      background: $bright-blue;
+      padding: 4px;
+      height: 24px;
+      flex: 0 0 24px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg {
+        color: white;
+
+      }
+    }
+  }
+
+  &__previous {
+    border: solid 1px $grey;
+  }
+  &__header {
+    margin: 0;
+  }
+  &__button {
+    background: none;
+    border: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: $dark;
+    font-weight: $fw-medium;
+  }
+  &__caret {
+    width: 40px;
+    height: 40px;
+  }
+  &__list {
+    display: none;
+    padding: .6rem;
+  }
+
+  &.open {
+    .report-block {
+      &__list {
+        display: block;
+      }
+      &__caret {
+        transform: rotate(90deg);
+      }
+    }
+  }
+  
+}

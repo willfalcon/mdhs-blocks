@@ -1,0 +1,137 @@
+@import '../block-import';
+
+.accordion {
+  // background: $lightest-blue; 
+  color: $cobalt;
+  padding-left: 1rem; 
+  padding-right: 1rem;
+  &.is-style-alt {  
+    // background: none;
+    .expander {
+      margin-bottom: 0;      
+      &__title {
+        flex-grow: 1;
+      }
+      $size: 40px;
+      $caret: $size * .333;
+      &__icon {
+        position: relative;
+        transform: rotate(180deg);
+        transition: .15s;
+      }
+      &__panel {
+        padding-left: $size + 10px;
+      }
+
+    }
+  }
+  .page-content & {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+  &__heading {
+    @include content-width; 
+    text-transform: uppercase;
+    color: $blue;
+    @include expander-heading;
+    // margin-bottom: 1rem;
+    // margin-top: 1rem;
+    font-size: 2rem;
+    
+    @include responsive {
+      padding-top: .5rem;
+    }
+    .accordion.alignfull & {
+      @include content-width; 
+      padding-left: 0;
+      padding-right: 0;
+    }
+  } 
+  &__header {
+    .cdhq-frontend & {
+      @include content-width;
+      padding: 0;
+    }
+  }
+  
+  &__section {
+    @include content-width;
+    
+    
+    padding: 1rem; 
+    border: 1px solid $bright-blue;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  &__panel {
+    padding: 1rem 1rem 0;
+    margin-bottom: 0;
+    border-radius: 8px;
+    // border: 1px solid $bright-blue;
+    
+    @include expander-panel;
+    & > div {
+      padding-bottom: .2rem;
+    }
+    * {
+      margin-top: 0;
+    }
+  }
+  &.is-style-alt {
+    .accordion {
+      &__heading {
+        padding: .5rem 0;
+      }
+      &__section {
+        border: 0;
+        // margin: 0;
+        &:first-of-type {
+          &::before {
+            width: 100%;
+            content: '';
+            height: 1px;
+            background: $bright-blue;
+            display: block;
+          }
+        } 
+        padding: 0;
+        &::after {
+          width: 100%;
+          content: '';
+          height: 1px;
+          background: $bright-blue;
+          display: block;
+        }
+      }
+      &__panel {
+        border: 0; 
+        border-radius: 0;
+        padding-left: 0;
+      }
+    }
+  }
+  &__icon {
+    // @include expander-icon;// @include expander-icon;
+    width: 30px;
+    height: 30px;
+    background: $bright-blue;
+    display: inline-flex;
+    position: relative;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 30px;
+    color: white;
+    font-size: 2.4rem;
+    span {
+      transition: .65s;
+      will-change: transform;
+      transform: rotate(0)
+    }
+    .expanded & { 
+      span {
+        transform:  rotate(-225deg);
+      }
+    }
+  }
+}

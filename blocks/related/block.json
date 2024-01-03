@@ -1,0 +1,37 @@
+{
+  "name": "cdhq/related",
+  "title": "Related",
+  "style": "related-style",
+  "editorStyle": "related-editor-style",
+  "category": "cdhq",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "related.php"
+  },
+  "supports": {
+    "align": false
+  },
+  "align": "full",
+  "icon": "list-view",
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "field_64076cad24e3f": [
+          {
+            "field_64076ccb96044": {
+              "title": "Paying Bills",
+              "url": "/"
+            }
+          },
+          {
+            "field_64076ccb96044": {
+              "title": "Caring for an Older Adult",
+              "url": "/"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

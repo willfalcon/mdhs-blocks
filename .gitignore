@@ -1,0 +1,10 @@
+node_modules
+.DS_Store
+
+dist/**/*.css
+dist/**/*.js
+!dist/**/*.min.css
+!dist/**/*.min.js
+dist/**/*.js.LICENSE.txt
+dist/**/*.min.js.LICENSE.txt
+!dist/swiper-bundle.css

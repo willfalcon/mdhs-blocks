@@ -1,0 +1,11 @@
+
+.quick-access {
+  // height: 250px;
+  &__image-wrapper {
+    height: 175px;
+  }
+  &__label {
+    height: 75px;
+    font-size: 30px;
+  }
+}

@@ -1,0 +1,21 @@
+.editor-styles-wrapper .block-editor-block-list__layout.is-root-container > .wp-block-cdhq-quick-help {
+  width: 100%;
+  max-width: 100%;
+}
+
+
+.wp-block {
+
+  .quick-help {
+    &.is-preview {
+      .quick-help {
+        &__interior {
+          display: flex;
+        }
+      }
+    }
+    &__heading {
+      font-size: 30px;
+    }
+  }
+}

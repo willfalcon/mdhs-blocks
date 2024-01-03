@@ -1,0 +1,223 @@
+$dark: #383D3F;
+$slate: $dark;
+$grey: #979797;
+// $orange: #F5470E;
+$orange: #D33B09;
+$light-orange: #FFC6B5;
+$light-orange2: #FFD9CD;
+$lighter-orange: #FFEDE7;
+
+// $bright-blue: #12B7FF;
+$bright-blue: #008299;
+// $blue: #6496AC;
+$blue: #4B788B;
+$cobalt: #4A7C92;
+$light-blue: #DBEAF1;
+$lightest-blue: #ECF9FF;
+
+$green: #56832C;
+$dark-green: #485939;
+$light-green: #E2FFF0;
+$mint: #E2FFF0;
+
+$teal: #3E738A;
+
+$purple: #7E2002;
+
+$gradient: linear-gradient(to right, #1C6663, #173D4D);
+
+:root {
+  --mdhs-dark: #{$dark};
+  --mdhs-slate: #{$slate};
+  --mdhs-slate: #{$slate};
+  --mdhs-orange: #{$orange};
+  --mdhs-grey: #{$grey};
+  --mdhs-light-orange: #{$light-orange};
+  --mdhs-light-orange2: #{$light-orange2};
+  --mdhs-lighter-orange: #{$lighter-orange};
+  --mdhs-bright-blue: #{$bright-blue};
+  --mdhs-blue: #{$blue};
+  --mdhs-cobalt: #{$cobalt};
+  --mdhs-light-blue: #{$light-blue};
+  --mdhs-lightest-blue: #{$lightest-blue};
+  --mdhs-green: #{$green};
+  --mdhs-dark-green: #{$dark-green};
+  --mdhs-light-green: #{$light-green};
+  --mdhs-mint: #{$mint};
+  --mdhs-teal: #{$teal};
+  --mdhs-purple: #{$purple};
+  --mdhs-gradient: #{$gradient};
+  
+} 
+
+$shadow: rgba(black, .5) 0 2px 4px;
+
+$header-height: 86px;
+$header-height-desktop: 145px;
+
+$small-break: 375px;
+$plus-break: 414px;
+$break: 768px;
+// ipad air 5th gen, ipad 10th gen: 820px;
+$ipad: 820px;
+$large-break: 1024px;
+
+$content-width: 1200px;
+$wide-width: 1400px;
+
+$admin-bar-mobile: 46px;
+$admin-bar: 32px;
+
+$fw-extralight: 200;
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+$fw-extrabold: 800;
+$fw-black: 900; 
+
+
+@mixin responsive($breakpoint: $break) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin mobile-only($breakpoint: $break - 1px) {
+	@media (max-width: $breakpoint) {
+		@content;
+	}
+}
+
+@mixin responsive-ipad($small: $ipad, $large: $large-break) {
+	@media (min-width: $small) and (max-width: $large) {
+		@content;
+	}
+}
+
+@mixin grid {
+	@supports (display: grid) {
+		@content;
+	}
+}
+
+@mixin font($weight: $fw-regular, $style: normal) {
+	font-family: "effra", sans-serif;
+	font-weight: $weight;
+  font-style: $style;
+}
+
+
+
+@mixin content-width($width: $content-width) {
+	width: $width;
+	max-width: 100%;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+// @mixin separator {
+//   &::after {
+//     content: '';
+//     width: 200px;
+//     height: 1px;
+//     background: $green;
+//     display: block;
+
+//     margin-left: auto;
+//     margin-right: auto;
+//     margin-top: 2rem;
+//   }
+// }
+
+@mixin spin {
+	animation: spin 1s ease-in-out infinite; 
+}
+@keyframes spin {
+	0% {
+		transform: rotate(0turn);
+	}
+	100% {
+		transform: rotate(1turn);
+	}
+}
+
+@mixin expander-heading {
+  background: none;
+  border: 0;
+  font-weight: $fw-medium;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+  gap: 1rem;
+  &:hover {
+    .expander__icon {
+      &::after {
+        transform: rotate(180deg);
+      } 
+      &::before {
+        transform: rotate(270deg);
+        .expanded & {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}
+
+@mixin expander-icon {
+  width: 30px;
+  height: 30px;
+  background: $bright-blue;
+  display: inline-flex;
+  position: relative;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 30px;
+
+  &::after,
+  &::before {
+    content: '';
+    background: white;
+    width: 35%;
+    height: 2px;
+    transition: .25s;
+    position: absolute;
+  }
+  &::after {
+    transform: rotate(0deg);
+  }
+  &::before {
+    transform: rotate(90deg); 
+    .expanded & {
+      transform: rotate(0deg);
+    }
+  }
+}
+
+@mixin expander-panel {
+  opacity: 0;
+  padding: 0;
+  > * {
+    margin-top: 0;
+  }
+  &.init {
+    opacity: 1;
+    position: static;
+    height: 0;
+    overflow: hidden;
+    transition: .15s;
+    .expanded & {
+      height: var(--height);
+
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "//comment": "Block version of the 'Get Involved' pattern that was used on the bottom of many pages.",
+  "name": "cdhq/contact-us",
+  "title": "Contact Us",
+  "category": "cdhq",
+  "style": "contact-us-style",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "contact-us.php"
+  },
+  "supports": {
+    "align": true,
+    "color": {
+      "background": true
+    },
+    "jsx": true
+  },
+  "icon": "table-col-before",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "light-blue"
+    }
+  },
+  "example": {
+    "attributes": {
+      "mode": "preview"
+    }
+  }
+}

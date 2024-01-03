@@ -1,0 +1,13 @@
+{
+  "name": "cdhq/filterable-page-list",
+  "title": "Filterable Page List",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "filterable-page-list.php"
+  },
+  "supports": {
+    "align": true
+  },
+  "align": "full",
+  "icon": "list-view"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "cdhq/styled-list-heading",
+  "title": "Styled List Heading",
+  "style": "styled-list-heading-style",
+  "editorStyle": "styled-list-heading-editor-style",
+  "category": "cdhq",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "styled-list-heading.php"
+  },
+  "supports": {
+    "align": false
+  },
+  "align": "full",
+  "icon": "editor-ol",
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "field_6407b5137a5ae": 1,
+        "field_6407b53c7a5af": "Styled List Heading"
+      }
+    }
+  }
+}

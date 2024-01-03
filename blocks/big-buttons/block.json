@@ -1,0 +1,69 @@
+{
+  "name": "cdhq/big-buttons",
+  "title": "Big Button Grid",
+  "description": "Large buttons arranged in a grid.",
+  "style": "big-buttons-style",
+  "editorStyle": "big-buttons-editor-style",
+  "category": "cdhq",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "big-buttons.php"
+  },
+  "supports": {
+    "align": true
+  },
+  "align": "full",
+  "icon": "grid-view",
+  "styles": [
+    {
+      "name": "col-1",
+      "label": "1 Column"
+    },
+    {
+      "name": "default",
+      "label": "2 Columns",
+      "isDefault": true
+    },
+    {
+      "name": "col-3",
+      "label": "3 Columns"
+    }
+  ],
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "field_641b2c847f9dd": [
+          {
+            "field_641b47ca7f9de": {
+              "title": "SNAP",
+              "url": "/",
+              "target": ""
+            }
+          },
+          {
+            "field_641b47ca7f9de": {
+              "title": "The Emergency Food Assistance Program",
+              "url": "/",
+              "target": ""
+            }
+          },
+          {
+            "field_641b47ca7f9de": {
+              "title": "Commodity Supplemental Food Program",
+              "url": "/",
+              "target": ""
+            }
+          },
+          {
+            "field_641b47ca7f9de": {
+              "title": "SNAP-Ed Nutrition Education",
+              "url": "/",
+              "target": ""
+            }
+          }
+        ]
+      }
+    }
+  }
+}

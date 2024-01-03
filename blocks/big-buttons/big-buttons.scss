@@ -1,0 +1,71 @@
+@import '../block-import';
+
+.big-buttons {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5rem;
+  .page-content > & {
+    padding: 0 3rem;
+  }
+  &__button {
+    background: $orange; 
+    color: white;
+    font-weight: $fw-bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+    padding: 2rem;
+    font-size: 2.4rem;
+    transition: .15s;
+    border-radius: 8px;
+    position: relative;
+    background: $dark-green;
+    .big-buttons &:hover {
+      background: $orange;
+      text-decoration: none;
+    }
+    &.text-left {
+      justify-content: flex-start;
+    }
+    &.text-right {
+      justify-content: flex-end;
+    }
+    span {
+      position: relative;
+      &::after {
+        content: '';
+        width: 100%;
+        height: 3px;
+        background: $bright-blue;
+        display: block;
+        position: relative;
+        top: .5rem;
+        transition: .2s;
+      }
+    }
+    &:hover {
+      span {
+        &::after {
+          background: white;
+        }
+      }
+    }
+  }
+  @include responsive {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
+    &.is-style-col-1 {
+      grid-template-columns: 1fr;
+    }
+    &.is-style-col-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    &__button {
+      min-height: 95px;
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "cdhq/hero",
+  "title": "Hero",
+  "description": "Hero image block for programs.",
+  "style": "hero-style",
+  "editorStyle": "hero-editor-style",
+  "category": "cdhq",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "hero.php"
+  },
+  "supports": {
+    "align": false
+  },
+  "align": "full",
+  "icon": "embed-photo",
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "field_63ff8abcfcef0": 791,
+        "field_63ff8ad3fcef1": "Helping Mississippians gain self-sufficiency and lead better lives."
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "cdhq/testimonial",
+  "title": "Testimonial",
+  "style": "testimonial-style",
+  "editorStyle": "testimonial-editor-style",
+  "category": "cdhq",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "testimonial.php"
+  },
+  "supports": {
+    "align": false
+  },
+  "align": "full",
+  "icon": "welcome-comments",
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "field_6407607a06c3f": "Quote from somebody who participated in a program of some kind.",
+        "field_6407608b06c40": "Attribution"
+      }
+    }
+  }
+}

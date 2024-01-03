@@ -1,0 +1,17 @@
+{
+  "name": "cdhq/homepage-header",
+  "title": "Homepage Header",
+  "description": "Header block for homepage.",
+  "style": "homepage-header-style",
+  "script": "homepage-header-script",
+  "category": "cdhq",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "homepage-header.php"
+  },
+  "supports": {
+    "align": true
+  },
+  "align": "full",
+  "icon": "embed-photo"
+}

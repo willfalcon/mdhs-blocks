@@ -1,0 +1,59 @@
+@import '../block-import';
+
+.expander {
+  padding: 1rem;
+  border: 1px solid $bright-blue;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  &__heading {
+    @include expander-heading;
+  }
+  
+  &__icon {
+    // @include expander-icon;
+    width: 30px;
+    height: 30px;
+    background: $bright-blue;
+    display: inline-flex;
+    position: relative;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 30px;
+    color: white;
+    font-size: 2.4rem;
+    span {
+      transition: .65s;
+      will-change: transform;
+      transform: rotate(0)
+    }
+    .expanded & { 
+      span {
+        transform:  rotate(-225deg);
+      }
+    }
+
+  }
+  
+  &.is-style-reversed {
+    border-color: white;
+    .expander {
+      &__heading {
+        color: white;
+      }
+      &__icon {
+        background: white;
+        color: $bright-blue;
+      }
+    }
+  }
+
+  &__panel {
+    @include expander-panel;
+    // somehow fixes the panel not being sized enough in the init script
+    border-top: 1px solid transparent;
+    .acf-innerblocks-container {
+      padding-top: 1rem;
+    }
+  }
+}

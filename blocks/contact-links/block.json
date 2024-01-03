@@ -1,0 +1,41 @@
+{
+  "//comment": "Styles borrowed from _sidebar-child-list.scss in main styles",
+  "name": "cdhq/contact-links",
+  "title": "Contact Links",
+  "category": "cdhq",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "contact-links.php"
+  },
+  "supports": {
+    "align": false
+  },
+  "align": "full",
+  "icon": "list-view",
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "inherit_parent": "0",
+        "_inherit_parent": "field_64d26112f33fb",
+        "contact_links_0_icon": { "style" : "solid", "id" : "phone", "label" : "Phone", "unicode" : "f095" },
+        "_contact_links_0_icon": "field_64d2615324b4a",
+        "contact_links_0_number": "8008777882",
+        "_contact_links_0_number": "field_64d26588980b2",
+        "contact_links_0_label": "Phone",
+        "_contact_links_0_label": "field_64d2686068b59",
+        "contact_links_1_icon": { "style" : "solid", "id" : "inbox", "label" : "Inbox", "unicode" : "f01c" },
+        "_contact_links_1_icon": "field_64d26679f68de",
+        "contact_links_1_email": "ccpayment@mdhs.ms.gov",
+        "_contact_links_1_email": "field_64d26689f68df",
+        "contact_links_1_label": "Email",
+        "_contact_links_1_label": "field_64d2687768b5a",
+        "contact_links": [
+          "phone",
+          "email"
+        ],
+        "_contact_links": "field_64d26112f340c"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "cdhq/phone-button",
+  "title": "Phone Button",
+  "style": "phone-button-style",
+  "category": "cdhq",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "phone-button.php"
+  },
+  "supports": {
+    "align": true
+  },
+  "align": "full",
+  "icon": "image-filter",
+  "example": {}
+}

@@ -1,0 +1,29 @@
+{
+  "name": "cdhq/expander",
+  "title": "Expander",
+  "style": "expander-style",
+  "editorStyle": "expander-editor-style",
+  "script": "expander-script",
+  "category": "cdhq",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "expander.php"
+  },
+  "supports": {
+    "align": false,
+    "jsx": true
+  },
+  "styles": [
+    {
+      "name": "default",
+      "label": "Default",
+      "isDefault": true
+    },
+    {
+      "name": "reversed",
+      "label": "Reversed"
+    }
+  ],
+  "align": "full",
+  "icon": "table-row-before"
+}

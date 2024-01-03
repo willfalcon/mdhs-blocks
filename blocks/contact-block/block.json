@@ -1,0 +1,26 @@
+{
+  "name": "cdhq/contact-block",
+  "title": "Contact Block",
+  "style": "contact-block-style",
+  "editorStyle": "contact-block-editor-style",
+  "viewScript": "contact-block-script",
+  "category": "cdhq",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "contact-block.php"
+  },
+  "supports": {
+    "align": true
+  },
+  "align": "full",
+  "icon": "image-filter",
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "field_6455574cc315b": "14873",
+        "field_6500ad677de5a": "lookup"
+      }
+    }
+  }
+}

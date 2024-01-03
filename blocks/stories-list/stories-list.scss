@@ -1,0 +1,16 @@
+@import '../block-import';
+
+.stories-list-wrapper {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  background: $lightest-blue;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  .stories-list-heading {
+    @include content-width(100%);
+
+  }
+  .stories-list {
+    width: 100%;
+  }
+}

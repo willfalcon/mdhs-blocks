@@ -1,0 +1,24 @@
+{
+  "name": "cdhq/search",
+  "title": "DHS Search",
+  "style": "search-style",
+  "editorStyle": "search-editor-style",
+  "category": "cdhq",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "search.php"
+  },
+  "supports": {
+    "align": true
+  },
+  "align": "full",
+  "icon": "search",
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "field_641344f1b7c80": "Looking for something else?"
+      }
+    }
+  }
+}

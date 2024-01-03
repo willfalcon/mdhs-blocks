@@ -1,0 +1,31 @@
+.wp-block {
+  .announcement {
+    float: none;
+    .announcement {
+      &__title {
+        font-size: 20px;
+        margin: 0;
+      }
+      &__body {
+        opacity: 1;
+        position: absolute; 
+        width: 100%;
+        // height: 0px; 
+        // > * {
+        //   position: absolute;
+        // }
+        height: auto;
+        position: relative;
+      }
+      &__expander {
+        transform: translateY(0%);
+        top: -40px;
+        bottom: initial;
+        span {
+          transform:  rotate(0deg);
+        }
+      }
+    }
+
+}
+}

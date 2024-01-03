@@ -1,0 +1,17 @@
+{
+  "name": "cdhq/stories-list",
+  "title": "Stories List",
+  "description": "List of stories filterable by category",
+  "style": "stories-list-style",
+  "editorStyle": "stories-list-editor-style",
+  "category": "cdhq",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "stories-list.php"
+  },
+  "supports": {
+    "align": true
+  },
+  "align": "full",
+  "icon": "editor-ul"
+}

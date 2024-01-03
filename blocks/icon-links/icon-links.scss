@@ -1,0 +1,64 @@
+@import '../block-import';
+
+.icon-links {
+  background: $mint;
+  color: $dark;
+
+  @include responsive {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 2rem !important;
+  }
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: $dark;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: $fw-medium;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    @include responsive {
+      flex: 0 0 300px;
+    }
+    @include responsive-ipad {
+      flex: 0 0 33.333%;
+    }
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: radial-gradient(closest-side, rgba(white, 1), rgba(white, 0));
+      opacity: 0;
+      transition: .25s;
+    }
+    &:hover {
+      text-decoration: none;
+      &::before {
+        opacity: 1;
+      }
+    }
+
+
+  }
+  &__label {
+    margin: 2rem 0;
+    display: block;
+    position: relative;
+  }
+  &__icon {
+    fill: $green;
+    position: relative;
+    @include responsive {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}

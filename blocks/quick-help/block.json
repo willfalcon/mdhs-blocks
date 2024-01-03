@@ -1,0 +1,49 @@
+{
+  "name": "cdhq/quick-help",
+  "title": "Quick Help",
+  "style": "quick-help-style",
+  "editorStyle": "quick-help-editor-style",
+  "category": "cdhq",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "quick-help.php"
+  },
+  "supports": {
+    "align": false
+  },
+  "align": "full",
+  "icon": "image-flip-horizontal",
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+          "field_6400d5fccc323": [
+            {
+              "field_6400d6723e67a": "",
+              "field_6400d67b3e67b": {
+                "title": "Access Forms",
+                "url": "/",
+                "target": ""
+              }
+            },        
+            {
+              "field_6400d6723e67a": "",
+              "field_6400d67b3e67b": {
+                "title": "Upload Documents",
+                "url": "/",
+                "target": ""
+              }
+            },
+            {
+              "field_6400d6723e67a": "",
+              "field_6400d67b3e67b": {
+                "title": "Apply for Benefits",
+                "url": "/",
+                "target": ""
+              }
+            }
+          ]
+      }
+    }
+  }
+}

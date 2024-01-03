@@ -1,0 +1,83 @@
+@import '../block-import';
+
+.quick-help {
+  .page-content & {
+    width: 100%;
+    padding: 2rem 1rem;
+  }
+  background: $lighter-orange;
+  &__interior {
+    @include responsive {
+      @include content-width($wide-width);
+      padding-left: 3rem;
+      padding-right: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  }
+  &__heading {
+    color: $purple;
+    text-transform: uppercase;
+    font-weight: $fw-regular;
+    text-align: center;
+    font-size: 2rem;
+    @include responsive {
+      font-size: 3rem;
+      flex: 0 0 100%;
+    }
+  }
+
+  &__items {
+    padding: 1rem 3rem;
+    @include responsive {
+      display: flex;
+      flex: 1;
+      justify-content: space-evenly;
+      justify-content: space-around;
+    }
+  }
+
+  &__item {
+    @include responsive {
+      position: relative;
+      padding: 0 2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &:not(:last-of-type) {
+        &::after {
+          content: '';
+          position: absolute;
+          height: 75%;
+          width: 1px;
+          background: $orange;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+  
+
+  &__label {
+    display: none;
+    @include responsive {
+      display: block;
+      font-weight: $fw-bold;
+      color: $dark;
+    }
+  }
+
+  &__button {
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem;
+    @include responsive {
+      display: inline-block;
+    }
+  }
+
+}

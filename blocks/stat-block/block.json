@@ -1,0 +1,26 @@
+{
+  "name": "cdhq/stat-block",
+  "title": "Stat Block",
+  "style": "stat-block-style",
+  "category": "cdhq",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "stat-block.php"
+  },
+  "supports": {
+    "align": false
+  },
+  "align": "full",
+  "icon": "embed-photo",
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "field_64021c511d108": "volunteer",
+        "field_64022503fa294": "Each month, Mississippi distributes over",
+        "field_64021c761d109": 13000,
+        "field_64021c841d10a": "food boxes to seniors!"
+      }
+    }
+  }
+}

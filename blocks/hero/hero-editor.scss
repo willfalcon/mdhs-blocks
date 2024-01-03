@@ -1,0 +1,28 @@
+.hero {
+  &__heading {
+    font-size: 26px;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  &__image-wrapper.placeholder {
+    .hero__image {
+      height: 300px;
+      width: 400px;
+      background: var(--wp--preset--color--cobalt);
+    }
+  }
+
+  &.is-preview {
+    .hero {
+      &__image {
+        max-width: 80%;
+      }
+    }
+  }
+}
+
+.editor-styles-wrapper .block-editor-block-list__layout.is-root-container > .wp-block-cdhq-hero {
+  width: 100%;
+  max-width: 100%;
+}

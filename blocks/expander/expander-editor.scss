@@ -1,0 +1,16 @@
+.wp-block {
+  .expander {
+    padding: 10px;
+    margin-bottom: 20px;
+    &__panel {
+      display: none; 
+    }
+  }
+  &.wp-block-cdhq-expander.is-selected,
+  &.wp-block-cdhq-expander.has-child-selected {
+    .expander__panel {
+      display: block;
+      opacity: 1;
+    }
+  }
+}
