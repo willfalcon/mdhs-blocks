@@ -8,10 +8,12 @@ export default function ContactCard({ openCounty, setOpenCounty, setFlip, rows, 
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const row = rows.find(row => {
-      const rowCounties = row.cells.find(cell => cell.columnId === searchFieldColumnId);
-      return rowCounties.value?.toLowerCase().includes(openCounty);
-    });
+    // const row = rows.find(row => {
+    //   const rowCounties = row.cells.find(cell => cell.columnId === searchFieldColumnId);
+    //   return rowCounties.value?.toLowerCase().includes(openCounty);
+    // });
+
+    const row = rows.find(row => row.id === openCounty);
 
     const { districtColumnId, numberColumnId, addressColumnId, addressColumn2Id, emailColumnId, websiteColumnId, iconsColumnId } =
       columnIds;

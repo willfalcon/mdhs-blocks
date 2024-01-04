@@ -13,19 +13,30 @@ export default function Block({ heading, sheet, dataset }) {
   const [flip, setFlip] = useState(false);
   const [rows, setRows] = useState(null);
   const [searchFieldColumnId, setSearchFieldColumnId] = useState(null);
+  const [searchResultFieldColumnId, setSearchResultFieldColumnId] = useState(null);
   const [columnIds, setColumnIds] = useState(null);
   const [missingCounties, setMissingCounties] = useState([]);
   const transitionDuration = 800;
+
   useEffect(() => {
     async function getData() {
       const res = await fetch(`/wp-json/smartsheet/v1/sheets/${sheet}`).then(res => res.json());
       const { columns, rows } = res;
       const filteredRows = filterRows(rows, dataset);
+
       setRows(filteredRows);
 
       const searchField = dataset.searchField;
       const searchFieldColumn = columns.find(col => col.id == searchField);
       setSearchFieldColumnId(searchFieldColumn.id);
+
+      const searchResultField = dataset.searchResultField;
+      if (searchResultField) {
+        const searchResultFieldColumn = columns.find(col => col.id == searchResultField);
+        setSearchResultFieldColumnId(searchResultFieldColumn.id);
+      }
+
+      const counties = filteredRows.map(row => row.cells.find(cell => cell.columnId === searchFieldColumn.id)?.value);
 
       const columnIds = await getColumnIds(dataset.postId, columns);
       setColumnIds(columnIds);
@@ -40,12 +51,19 @@ export default function Block({ heading, sheet, dataset }) {
     }
     getData();
   }, []);
+
   return (
     <>
       <h2 className="contact-block__heading">{heading}</h2>
       <div className={classNames('flip-card', { flip })} style={{ transitionDuration: `${transitionDuration / 1000}s` }}>
         <div className="flip-card-inner">
-          <CountySearch setOpenCounty={setOpenCounty} missingCounties={missingCounties} />
+          <CountySearch
+            setOpenCounty={setOpenCounty}
+            missingCounties={missingCounties}
+            rows={rows}
+            searchFieldColumnId={searchFieldColumnId}
+            searchResultFieldColumnId={searchResultFieldColumnId}
+          />
           {openCounty &&
             (openCounty === 'missing' ? (
               <MissingCounty setOpenCounty={setOpenCounty} setFlip={setFlip} transitionDuration={transitionDuration} dataset={dataset} />

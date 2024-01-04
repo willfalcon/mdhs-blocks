@@ -25,6 +25,7 @@
 <div class="contact-block" 
   data-smartsheet-id="<?php the_field( 'smartsheet_select', $block_id ); ?>" 
   data-search-field="<?php the_field('search_field', $block_id); ?>"
+  data-search-result-field="<?php the_field('search_result_field', $block_id); ?>"
   data-missing-contact="<?php the_field('missing_contact', $block_id); ?>"
   data-default-phone="<?php the_field('phone', 'options'); ?>"
   <?php if (have_rows('filter', $block_id)): while (have_rows('filter', $block_id)) : the_row(); ?>

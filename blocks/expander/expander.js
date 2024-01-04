@@ -32,8 +32,9 @@ expanders.forEach(expander => {
 });
 
 wp.domReady(() => {
-  console.log(document);
   const hash = location.hash;
-  const target = document.querySelector(hash);
-  target.classList.add('expanded');
+  if (hash) {
+    const target = document.querySelector(hash);
+    target.classList.add('expanded');
+  }
 });

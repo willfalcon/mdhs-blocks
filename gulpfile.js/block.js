@@ -58,7 +58,7 @@ exports.developBlock = function developBlock() {
   watch(styleWatch, () => styleScript(styleSource, styleDest, true));
   watch(editorStyleWatch, () => styleScript(editorStyleSource, styleDest, true));
   watch('src/styles/editor-styles.scss', () => styleScript('src/styles/editor-styles.scss', 'dist/', true));
-  watch(scriptWatch, () => blockJsScript(scriptSource, block));
+  watch(scriptWatch, () => blockJsScript(scriptSource, block, true));
   watch(editorScriptWatch, () => blockJsScript(editorScriptSource, block, true));
   watch(['**/*.php|json'], refresh);
 };
