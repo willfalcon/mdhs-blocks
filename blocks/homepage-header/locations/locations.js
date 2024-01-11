@@ -62,6 +62,7 @@ function attachListener(button) {
     const phoneId = contactCard.phone ? parseInt(contactCard.phone) : null;
     const emailId = contactCard.email ? parseInt(contactCard.email) : null;
     const iconsId = contactBlock.acf.icons_column ? parseInt(contactBlock.acf.icons_column) : null;
+    const locationStatusId = contactBlock.acf.location_status_field ? parseInt(contactBlock.acf.location_status_field) : null;
 
     const { county, locations } = rows[0];
 
@@ -77,6 +78,9 @@ function attachListener(button) {
             const number = phone ? parsePhoneNumber(phone, 'US') : null;
             const email = cells.find(c => c.columnId === emailId).displayValue;
             const icons = cells.find(c => c.columnId === iconsId).displayValue;
+            const status = cells.find(c => c.columnId === locationStatusId).displayValue;
+            // console.log(status);
+            // const status = 'Office Closing Early';
             const iconList = icons.split(', ');
             return ` 
             <li class="location-result__item"> 
@@ -106,6 +110,16 @@ function attachListener(button) {
                   })
                   .join('')}
               </ul>
+              ${
+                status
+                  ? `
+                <span class="location-result__closure">
+                  <i class="fa-solid fa-circle-exclamation"></i>
+                  ${status}
+                </span>
+              `
+                  : ``
+              }
               <h5 class="location-result__name">${name}</h5>
               ${number ? `<a class="location-result__call" href="${number.getURI()}">${number.formatNational()}</a>` : ``}
               ${email ? `<a class="location-result__email" href="mailto:${email}">${email}</a>` : ``}

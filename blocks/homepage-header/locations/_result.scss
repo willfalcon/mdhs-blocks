@@ -160,6 +160,14 @@
           grid-column: 1 / 2;
           
         }
+        &__closure {
+          background: rgb(220 38 38);
+          color: white;
+          padding: .5rem 1rem;
+          border-radius: 10rem;
+          // display: inline-block;
+          justify-self: start;
+        }
         &__name {
           color: $dark;
           font-weight: $fw-medium;
