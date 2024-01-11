@@ -34,33 +34,40 @@ function refresh() {
   return src('index.php').pipe(livereload());
 }
 
-exports.developBlock = function developBlock() {
+exports.developBlock = async function developBlock() {
   if (!argv.block) {
     console.log('Must set option --block');
     return src('index.php');
   }
 
   const block = argv.block;
-  console.log(block);
 
-  const styleSource = `blocks/${block}/${block}.scss`;
-  const styleWatch = [`blocks/${block}/**/*.scss`, `!blocks/${block}/**/*-editor.scss`];
-  const editorStyleWatch = `blocks/${block}/**/*-editor.scss`;
-  const editorStyleSource = `blocks/${block}/${block}-editor.scss`;
-  const styleDest = `./dist/${block}`;
-  const scriptSource = argv.block ? `blocks/${argv.block}/${argv.block}.js` : 'blocks/**/*.js';
-  const scriptWatch = argv.block ? `blocks/${argv.block}/**/*.js` : 'blocks/**/*.js';
-  const editorScriptSource = argv.block ? `blocks/${argv.block}/${argv.block}-editor.js` : 'blocks/**/*.js';
-  const editorScriptWatch = argv.block ? `blocks/${argv.block}/**/*-editor.js` : 'blocks/**/*.js';
+  await fs.access(`blocks/${block}/block.json`, err => {
+    if (err) {
+      console.log(`block ${block} not found`);
+    } else {
+      console.log(block);
 
-  livereload.listen();
+      const styleSource = `blocks/${block}/${block}.scss`;
+      const styleWatch = [`blocks/${block}/**/*.scss`, `!blocks/${block}/**/*-editor.scss`];
+      const editorStyleWatch = `blocks/${block}/**/*-editor.scss`;
+      const editorStyleSource = `blocks/${block}/${block}-editor.scss`;
+      const styleDest = `./dist/${block}`;
+      const scriptSource = argv.block ? `blocks/${argv.block}/${argv.block}.js` : 'blocks/**/*.js';
+      const scriptWatch = argv.block ? `blocks/${argv.block}/**/*.js` : 'blocks/**/*.js';
+      const editorScriptSource = argv.block ? `blocks/${argv.block}/${argv.block}-editor.js` : 'blocks/**/*.js';
+      const editorScriptWatch = argv.block ? `blocks/${argv.block}/**/*-editor.js` : 'blocks/**/*.js';
 
-  watch(styleWatch, () => styleScript(styleSource, styleDest, true));
-  watch(editorStyleWatch, () => styleScript(editorStyleSource, styleDest, true));
-  watch('src/styles/editor-styles.scss', () => styleScript('src/styles/editor-styles.scss', 'dist/', true));
-  watch(scriptWatch, () => blockJsScript(scriptSource, block, true));
-  watch(editorScriptWatch, () => blockJsScript(editorScriptSource, block, true));
-  watch(['**/*.php|json'], refresh);
+      livereload.listen();
+
+      watch(styleWatch, () => styleScript(styleSource, styleDest, true));
+      watch(editorStyleWatch, () => styleScript(editorStyleSource, styleDest, true));
+      watch('src/styles/editor-styles.scss', () => styleScript('src/styles/editor-styles.scss', 'dist/', true));
+      watch(scriptWatch, () => blockJsScript(scriptSource, block, true));
+      watch(editorScriptWatch, () => blockJsScript(editorScriptSource, block, true));
+      watch(['**/*.php|json'], refresh);
+    }
+  });
 };
 
 // const buildBlock = series(buildBlockScript, buildBlockStyles);

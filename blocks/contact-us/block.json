@@ -23,7 +23,7 @@
     },
     "backgroundColor": {
       "type": "string",
-      "default": "light-blue"
+      "default": "lightest-blue"
     }
   },
   "example": {

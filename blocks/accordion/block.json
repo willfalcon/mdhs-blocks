@@ -20,7 +20,7 @@
   "attributes": {
     "backgroundColor": {
       "type": "string",
-      "default": "light-blue"
+      "default": "lightest-blue"
     },
     "align": {
       "type": "string",

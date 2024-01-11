@@ -21,7 +21,7 @@
 
         <?php 
           $data = $parent_related_block['attrs']['data'];
-          $count = array_key_exists('contact_links', $data) ? count($data['contact_links']) : 0;
+          $count = (array_key_exists('contact_links', $data) && !empty($data['contact_links'])) ? count($data['contact_links']) : 0;
         ?>
 
         <?php for ($x = 0; $x < $count; $x++) : ?>

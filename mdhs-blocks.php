@@ -2,7 +2,7 @@
 /*
   Plugin Name: MDHS Blocks
   Description: Custom blocks for MDHS
-  Version: 1.0.1
+  Version: 1.0.3
   Author: Creative Distillery
   Author URI: https://creativedistillery.com
 */
@@ -29,7 +29,7 @@ add_filter( 'block_categories_all', 'cdhq_add_block_category', 10, 2);
  * Hooked into 'init'
  */
 
- function cdhq_register_blocks() {
+function cdhq_register_blocks() {
 	$blocks = get_blocks();
 
 	$ver = get_plugin_data( plugin_dir_path( __FILE__ ) . 'mdhs-blocks.php' )['Version'];
@@ -61,21 +61,21 @@ add_filter( 'block_categories_all', 'cdhq_add_block_category', 10, 2);
 			}
 		}
 	}
- }
+}
 
- function get_blocks() {
-		$theme = wp_get_theme();
-		$blocks = get_option('cdhq_blocks');
-		$version = get_option('cdhq_blocks_version');
-		if (empty($blocks) || version_compare($theme->get('Version'), $version) || (function_exists( 'wp_get_environment_type' ) && 'production' !== wp_get_environment_type())) {
-			$blocks = scandir(plugin_dir_path( __FILE__ ) . 'blocks/' );
-			$blocks = array_values(array_diff($blocks, array('..', '.', '.DS_Store', '_base-block', '_block-import.scss', 'counties.js', 'utils.js')));
-			
-			update_option('cdhq_blocks', $blocks);
-			update_option('cdhq_blocks_version', $theme->get('Version'));
-		}
-		return $blocks;
+function get_blocks() {
+	$theme = wp_get_theme();
+	$blocks = get_option('cdhq_blocks');
+	$version = get_option('cdhq_blocks_version');
+	if (empty($blocks) || version_compare($theme->get('Version'), $version) || (function_exists( 'wp_get_environment_type' ) && 'production' !== wp_get_environment_type())) {
+		$blocks = scandir(plugin_dir_path( __FILE__ ) . 'blocks/' );
+		$blocks = array_values(array_diff($blocks, array('..', '.', '.DS_Store', '_base-block', '_block-import.scss', 'counties.js', 'utils.js')));
+		
+		update_option('cdhq_blocks', $blocks);
+		update_option('cdhq_blocks_version', $theme->get('Version'));
 	}
+	return $blocks;
+}
 
 add_action('init', 'cdhq_register_blocks', 5);
 

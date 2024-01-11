@@ -3,7 +3,7 @@
   "title": "Expander",
   "style": "expander-style",
   "editorStyle": "expander-editor-style",
-  "script": "expander-script",
+  "script": ["wp-dom-ready", "expander-script"],
   "category": "cdhq",
   "acf": {
     "mode": "preview",

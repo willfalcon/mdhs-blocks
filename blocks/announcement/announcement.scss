@@ -42,7 +42,9 @@
     padding: 1rem 1.5rem 0;
     font-size: 2rem;
     font-weight: $fw-medium;
-    color: $slate;
+    .cdhq-frontend & {
+      color: $slate; 
+    }
     margin-bottom: 2rem;
     .announcement & {
       margin-top: 0;
@@ -55,6 +57,11 @@
 
     padding-right: 38px;
     padding: 0 1.5rem 1rem;
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
     
   }
 
