@@ -207,6 +207,18 @@
       text-align: center;
       font-size: 2.8rem;
     }
+    &__status {
+      background: rgb(220 38 38);
+      color: white;
+      padding: .5rem 1rem;
+      border-radius: 10rem;
+      // display: inline-block;
+      justify-self: start;
+      margin-bottom: .5rem;
+      svg {
+        margin-right: .5rem;
+      }
+    }
     &__name {
       grid-column: 1 / 2;
       text-wrap: balance;

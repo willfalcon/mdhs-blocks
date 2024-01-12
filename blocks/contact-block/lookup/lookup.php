@@ -28,6 +28,7 @@
   data-search-result-field="<?php the_field('search_result_field', $block_id); ?>"
   data-missing-contact="<?php the_field('missing_contact', $block_id); ?>"
   data-default-phone="<?php the_field('phone', 'options'); ?>"
+  data-location-status-field="<?php the_field('location_status_field', $block_id); ?>"
   <?php if (have_rows('filter', $block_id)): while (have_rows('filter', $block_id)) : the_row(); ?>
     data-filter-field="<?php the_sub_field('filter_field'); ?>"
     data-filter-condition="<?php the_sub_field('condition'); ?>"

@@ -4,7 +4,16 @@ import { useEffect, useState } from 'preact/hooks';
 import Icons from './Icons';
 import Export from './Export';
 
-export default function ContactCard({ openCounty, setOpenCounty, setFlip, rows, searchFieldColumnId, columnIds, transitionDuration }) {
+export default function ContactCard({
+  openCounty,
+  setOpenCounty,
+  setFlip,
+  rows,
+  searchFieldColumnId,
+  columnIds,
+  transitionDuration,
+  locationStatusFieldColumnId,
+}) {
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -27,6 +36,7 @@ export default function ContactCard({ openCounty, setOpenCounty, setFlip, rows, 
     const website = websiteColumnId ? row.cells.find(cell => cell.columnId === websiteColumnId).displayValue : false;
     const email = emailColumnId ? row.cells.find(cell => cell.columnId === emailColumnId).displayValue : false;
     const icons = iconsColumnId ? row.cells.find(cell => cell.columnId === iconsColumnId).displayValue : false;
+    const status = locationStatusFieldColumnId ? row.cells.find(cell => cell.columnId === locationStatusFieldColumnId).displayValue : false;
 
     setData({
       county,
@@ -37,6 +47,7 @@ export default function ContactCard({ openCounty, setOpenCounty, setFlip, rows, 
       website,
       email,
       icons,
+      status,
     });
     setFlip(true);
   }, [openCounty, rows]);
@@ -61,6 +72,12 @@ export default function ContactCard({ openCounty, setOpenCounty, setFlip, rows, 
             <p class="contact__location">{data?.county}</p>
             <h3 class="contact__name">{data?.district}</h3>
             {data.icons && <Icons icons={data.icons} />}
+            {data.status && (
+              <span class="contact__status">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                {data.status}
+              </span>
+            )}
             {data.number && (
               <a class="contact__phone" href={data.number.getURI()}>
                 {data.number.formatNational()}

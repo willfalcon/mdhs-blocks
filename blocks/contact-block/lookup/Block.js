@@ -14,6 +14,7 @@ export default function Block({ heading, sheet, dataset }) {
   const [rows, setRows] = useState(null);
   const [searchFieldColumnId, setSearchFieldColumnId] = useState(null);
   const [searchResultFieldColumnId, setSearchResultFieldColumnId] = useState(null);
+  const [locationStatusFieldColumnId, setLocationStatusFieldColumnId] = useState(null);
   const [columnIds, setColumnIds] = useState(null);
   const [missingCounties, setMissingCounties] = useState([]);
   const transitionDuration = 800;
@@ -31,9 +32,17 @@ export default function Block({ heading, sheet, dataset }) {
       setSearchFieldColumnId(searchFieldColumn.id);
 
       const searchResultField = dataset.searchResultField;
-      if (searchResultField) {
+
+      if (searchResultField && searchResultField !== 'none') {
         const searchResultFieldColumn = columns.find(col => col.id == searchResultField);
         setSearchResultFieldColumnId(searchResultFieldColumn.id);
+      }
+
+      const locationStatusField = dataset.locationStatusField;
+
+      if (locationStatusField && searchResultField !== 'none') {
+        const locationStatusFieldColumn = columns.find(col => col.id == locationStatusField);
+        setLocationStatusFieldColumnId(locationStatusFieldColumn.id);
       }
 
       const counties = filteredRows.map(row => row.cells.find(cell => cell.columnId === searchFieldColumn.id)?.value);
@@ -76,6 +85,7 @@ export default function Block({ heading, sheet, dataset }) {
                 searchFieldColumnId={searchFieldColumnId}
                 columnIds={columnIds}
                 transitionDuration={transitionDuration}
+                locationStatusFieldColumnId={locationStatusFieldColumnId}
               />
             ))}
         </div>
