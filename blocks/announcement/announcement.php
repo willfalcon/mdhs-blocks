@@ -37,9 +37,17 @@ if (get_sub_field('schedule_announcement')) {
 
   $effect = get_sub_field('effect');
 
+  $classes = 'announcement ';
+  $classes .= $is_preview ? 'preview' : 'closed';
+  
+  if ($block['align']) {
+    $classes .= ' align' . $block['align'];
+  }
+  write_log($block);
+
 ?>
 
-<div class="announcement <?php echo $is_preview ? 'preview' : 'closed'; ?> <?php echo $effect; ?>"<?php if ($effect == 'delay') : echo 'data-delay="' . get_sub_field('delay') . '"'; endif; ?> data-key="<?php echo $key; ?>">
+<div class="<?php echo $classes; ?> <?php echo $effect; ?>"<?php if ($effect == 'delay') : echo 'data-delay="' . get_sub_field('delay') . '"'; endif; ?> data-key="<?php echo $key; ?>">
   <header class="announcement__header"><?php _e('Announcement', 'mdhs'); ?></header>
   <div class="announcement__body">
     <h3 class="announcement__title"><?php the_sub_field('heading'); ?></h3>

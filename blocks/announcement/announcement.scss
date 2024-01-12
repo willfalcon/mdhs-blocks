@@ -2,12 +2,25 @@
 
 .announcement {
 
-  margin: 2rem 0;
+  margin: 2rem auto; 
   border-radius: 9px;
-  border: 1px solid $orange;
+  border: 1px solid $orange; 
   background: lighten($orange, 47);
   overflow: hidden;
   position: relative;
+  padding: 0;
+
+  &.alignfull {
+    width: calc(100% - 2rem);
+    margin: 2rem 1rem;
+  }
+
+  &.alignleft {
+    margin-left: 1rem;
+  }
+  &.alignright {
+    margin-right: 1rem;
+  }
 
   &__header {
     font-size: 2rem;

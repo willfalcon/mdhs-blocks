@@ -1,5 +1,5 @@
-const { buildBlock, developBlock, buildBlocks, developBlocks } = require('./block');
-
+const { buildBlock, developBlock, developBlocks } = require('./block');
+const buildBlocks = require('./buildBlocks');
 exports.build = buildBlocks;
 exports.developBlock = developBlock;
 exports.buildBlock = buildBlock;

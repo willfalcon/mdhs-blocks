@@ -2,7 +2,7 @@
 /*
   Plugin Name: MDHS Blocks
   Description: Custom blocks for MDHS
-  Version: 1.0.5
+  Version: 1.0.6
   Author: Creative Distillery
   Author URI: https://creativedistillery.com
 */
@@ -40,6 +40,11 @@ function cdhq_register_blocks() {
 	wp_register_script('luxon', 'https://cdn.jsdelivr.net/npm/luxon@3.4.3/build/global/luxon.min.js', array(), null, true);
 	wp_register_style('tabulator-style', 'https://unpkg.com/tabulator-tables/dist/css/tabulator_materialize.min.css');
 
+	if ($env == 'development' || $env == 'local') {
+		wp_register_style( 'swiper_styles', get_template_directory_uri() . '/dist/swiper-bundle.css', array(), $ver );
+	} else {
+		wp_register_style( 'swiper_styles', get_template_directory_uri() . '/dist/swiper-bundle.min.css', array(), $ver );
+	}
 	foreach ($blocks as $block) {
 		$block_base = $base . $block;
 		

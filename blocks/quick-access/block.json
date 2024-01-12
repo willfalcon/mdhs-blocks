@@ -1,7 +1,7 @@
 {
   "name": "cdhq/quick-access",
   "title": "Quick Access",
-  "style": "quick-access-style",
+  "style": ["swiper_styles", "quick-access-style"],
   "editorStyle": "quick-access-editor-style",
   "script": "quick-access-script",
   "category": "cdhq",
