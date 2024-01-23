@@ -32,9 +32,12 @@ expanders.forEach(expander => {
 });
 
 wp.domReady(() => {
-  const hash = location.hash;
+  const hash = location.hash?.toLowerCase();
   if (hash) {
     const target = document.querySelector(hash);
-    target.classList.add('expanded');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      target.classList.add('expanded');
+    }
   }
 });

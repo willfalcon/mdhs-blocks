@@ -2,7 +2,7 @@
 /*
   Plugin Name: MDHS Blocks
   Description: Custom blocks for MDHS
-  Version: 1.0.6
+  Version: 1.0.7
   Author: Creative Distillery
   Author URI: https://creativedistillery.com
 */
@@ -51,18 +51,37 @@ function cdhq_register_blocks() {
 		$dist_base = plugin_dir_url( __FILE__ ) . 'dist/' . $block . '/' . $block;
 		
 		if (file_exists($block_base . '/block.json')) {
+			$block_json = json_decode(file_get_contents($block_base . '/block.json'));
+			$dependencies = property_exists($block_json, 'dependencies') ? $block_json->dependencies : false;
+
 			register_block_type($block_base);
 			if (file_exists($block_base . '/' . $block . '.scss')) {
-				wp_register_style($block . '-style', $is_dev ? $dist_base . '.css' : $dist_base . '.min.css', array(), $ver);
+				$deps = array();
+				if ($dependencies && property_exists($dependencies, 'style')) {
+					$deps = $dependencies->style;
+				}
+				wp_register_style($block . '-style', $is_dev ? $dist_base . '.css' : $dist_base . '.min.css', $deps, $ver);
 			}
 			if (file_exists($block_base . '/' . $block . '-editor.scss')) {
-				wp_register_style($block . '-editor-style', $is_dev ? $dist_base . '-editor.css' : $dist_base . '-editor.min.css', array(), $ver);
+				$deps = array();
+				if ($dependencies && property_exists($dependencies, 'editorStyle')) {
+					$deps = $dependencies->editorStyle;
+				}
+				wp_register_style($block . '-editor-style', $is_dev ? $dist_base . '-editor.css' : $dist_base . '-editor.min.css', $deps, $ver);
 			}
 			if (file_exists($block_base . '/' . $block . '.js')) {
-				wp_register_script($block . '-script', $is_dev ? $dist_base . '.js' : $dist_base . '.min.js', array(), $ver, true);
+				$deps = array();
+				if ($dependencies && property_exists($dependencies, 'script')) {
+					$deps = $dependencies->script;
+				}
+				wp_register_script($block . '-script', $is_dev ? $dist_base . '.js' : $dist_base . '.min.js', $deps, $ver, true);
 			}
 			if (file_exists($block_base . '/' . $block . '-editor.js')) {
-				wp_register_script($block . '-editor-script', $is_dev ? $dist_base . '-editor.js' : $dist_base . '-editor.min.js', array(), $ver, true);
+				$deps = array();
+				if ($dependencies && property_exists($dependencies, 'editorScript')) {
+					$deps = $dependencies->editorScript;
+				}
+				wp_register_script($block . '-editor-script', $is_dev ? $dist_base . '-editor.js' : $dist_base . '-editor.min.js', $deps, $ver, true);
 			}
 		}
 	}

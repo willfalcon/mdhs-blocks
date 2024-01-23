@@ -3,7 +3,10 @@
   "title": "Expander",
   "style": "expander-style",
   "editorStyle": "expander-editor-style",
-  "script": ["wp-dom-ready", "expander-script"],
+  "script": ["expander-script"],
+  "dependencies": {
+    "script": ["wp-dom-ready"]
+  },
   "category": "cdhq",
   "acf": {
     "mode": "preview",

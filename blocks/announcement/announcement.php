@@ -43,7 +43,7 @@ if (get_sub_field('schedule_announcement')) {
   if ($block['align']) {
     $classes .= ' align' . $block['align'];
   }
-  
+  write_log($block);
 
 ?>
 

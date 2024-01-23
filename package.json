@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "images": "imagemin images/* --out-dir=dist",
-    "build": "gulp build"
+    "build": "gulp build",
+    "buildDev": "gulp build -D",
+    "dev": "gulp developBlocks"
   },
   "keywords": [],
-  "author": "",
+  "author": "Creative Distillery",
   "license": "ISC",
   "dependencies": {
     "@popperjs/core": "^2.11.8",
@@ -17,6 +19,7 @@
     "date-fns": "^3.0.6",
     "js-cookie": "^3.0.5",
     "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.8.1",
     "libphonenumber-js": "^1.10.53",
     "object-fit-images": "^3.2.4",
     "preact": "^10.19.3",

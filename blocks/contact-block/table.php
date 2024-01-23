@@ -109,7 +109,7 @@
   <?php endwhile; endif; ?>
 >
   <h2 class="contact-block__heading"><?php echo $contact_block->post_title; ?></h2>
-  <table>
+  <table id="table-<?php echo $block_id; ?>">
     <thead>
       <tr>
         <?php
@@ -134,3 +134,11 @@
     </tbody>
   </table>
 </div>
+
+<button class="button contact-table-export" id="<?php echo 'table-export-' . $block_id; ?>" aria-describedby="export-tooltip-<?php echo $block_id; ?>">
+  <i class="fa-solid fa-download"></i>
+  <div class="contact__tooltip" id="export-tooltip-<?php echo $block_id; ?>" role="tooltip">
+    Export Contact Info
+    <div class="tooltip-arrow" data-popper-arrow></div>
+  </div>
+</button>

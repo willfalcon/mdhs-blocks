@@ -404,3 +404,61 @@
     }
   }
 }
+
+.contact-table-export {
+  display: inline;
+  justify-self: end;
+  .accordion &,
+  .expander & {
+    margin-bottom: 3rem;
+  }
+
+  .contact__tooltip {
+    
+    padding: .5rem 1rem;
+    background: $dark;
+    color: white;
+    padding: .5rem;
+    font-size: 1.4rem;
+    text-align: center;
+    display: none;
+    width: 200px;
+    &[data-show] {
+      display: block;
+    }
+
+    .tooltip-arrow,
+    .tooltip-arrow::before {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: inherit;
+    }
+
+    .tooltip-arrow {
+      visibility: hidden;
+    }
+
+    .tooltip-arrow::before {
+      visibility: visible;
+      content: '';
+      transform: rotate(45deg);
+    }
+    &[data-popper-placement^='top'] > .tooltip-arrow {
+      bottom: -4px;
+    }
+    &[data-popper-placement^='bottom'] > .tooltip-arrow {
+      top: -4px;
+    }
+    &[data-popper-placement^='left'] > .tooltip-arrow {
+      right: -4px;
+    }
+    &[data-popper-placement^='right'] > .tooltip-arrow {
+      left: -4px;
+    }
+
+
+  }
+
+  
+}

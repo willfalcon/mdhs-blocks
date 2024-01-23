@@ -1,8 +1,12 @@
 {
   "name": "cdhq/sharepoint-list",
   "title": "Sharepoint List",
-  "style": ["sharepoint-list-style", "tabulator-style"],
-  "viewScript": ["luxon", "sharepoint-list-script"],
+  "style": ["sharepoint-list-style"],
+  "viewScript": ["sharepoint-list-script"],
+  "dependencies": {
+    "style": ["tabulator-style"],
+    "script": ["luxon"]
+  },
   "category": "cdhq",
   "acf": {
     "mode": "auto",

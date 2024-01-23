@@ -76,6 +76,11 @@ const buildBlock = series(buildBlockStyles);
 exports.buildBlockStyles = buildBlockStyles;
 exports.buildBlock = buildBlockStyles;
 
+function copyAssetPHP(block) {
+  const source = src(`blocks/${block}/${block}.asset.php`);
+  source.pipe(dest(`dist/${block}`));
+}
+
 async function developBlocks() {
   const blocks = await readdir('blocks/');
   const exclude = ['blocks.php', '_block-import.scss', '.DS_Store'];
@@ -83,6 +88,12 @@ async function developBlocks() {
 
   livereload.listen();
 
+  const assetPHPWatcher = watch(['blocks/**/*.asset.php']);
+  assetPHPWatcher.on('change', path => {
+    const block = blockNames.filter(name => path.includes(name))[0];
+
+    copyAssetPHP(block);
+  });
   const styleWatcher = watch(['blocks/**/*.scss']);
   function runStyleScript(path) {
     const block = blockNames.filter(name => path.includes(name))[0];

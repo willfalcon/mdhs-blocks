@@ -1,12 +1,10 @@
-import { render, h } from 'preact';
-import Block from './lookup/Block';
+const lookup = document.querySelector('.contact-block');
 
-const blocks = document.querySelectorAll('.contact-block');
+if (lookup) {
+  import('./lookup');
+}
 
-blocks.forEach(block => {
-  const heading = block.querySelector('.contact-block__heading').innerText;
-  const sheet = block.dataset.smartsheetId;
-  const RootComponent = <Block block={block} heading={heading} sheet={sheet} dataset={block.dataset} />;
-
-  render(RootComponent, block);
-});
+const table = document.querySelector('.contact-block-table');
+if (table) {
+  import('./tableExport');
+}
