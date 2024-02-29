@@ -37,13 +37,12 @@ if (get_sub_field('schedule_announcement')) {
 
   $effect = get_sub_field('effect');
 
-  $classes = 'announcement ';
+  $classes = 'announcement collapsible ';
   $classes .= $is_preview ? 'preview' : 'closed';
   
   if ($block['align']) {
     $classes .= ' align' . $block['align'];
   }
-  write_log($block);
 
 ?>
 

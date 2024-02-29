@@ -1,5 +1,5 @@
 <?php
-  $classes = 'expander';
+  $classes = 'expander collapsible';
   if (array_key_exists('className', $block)) {
     $classes .= ' ' . $block['className'];
   }

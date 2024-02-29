@@ -14,6 +14,12 @@ document.querySelectorAll('a').forEach(el => {
   }
 });
 
+function setToAuto(e) {
+  const panel = e.target;
+  panel.style.setProperty('--height', 'auto');
+  panel.removeEventListener('transitionend', setToAuto);
+}
+
 expanders.forEach(expander => {
   // console.log(expander);
   const panel = expander.querySelector('.expander__panel');
@@ -22,8 +28,17 @@ expanders.forEach(expander => {
   panel.classList.add('init');
 
   const button = expander.querySelector('.expander__heading');
+
   button.addEventListener('click', () => {
-    expander.classList.toggle('expanded');
+    if (expander.classList.contains('expanded')) {
+      panel.style.setProperty('--height', `${panel.scrollHeight}px`);
+      setTimeout(() => {
+        expander.classList.remove('expanded');
+      });
+    } else {
+      panel.addEventListener('transitionend', setToAuto);
+      expander.classList.add('expanded');
+    }
   });
 
   if (window.location.hash === `#${button.id}`) {

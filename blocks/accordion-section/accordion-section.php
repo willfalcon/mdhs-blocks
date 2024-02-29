@@ -1,4 +1,4 @@
-<div class="accordion__section expander" id="<?php echo get_field('id') ? get_field('id') : slugify(get_field('heading')); ?>">
+<div class="accordion__section expander collapsible" id="<?php echo get_field('id') ? get_field('id') : slugify(get_field('heading')); ?>">
   <button class="accordion__heading expander__heading">
     <span class="accordion__title expander__title"><?php
     if (is_admin()) {

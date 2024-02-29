@@ -5,9 +5,8 @@ if ($report) :
     
     $newdocuments = get_field('reports_with_doc', $report);
 
-    
 ?>
-  <div class="report-block">
+  <div class="report-block collapsible">
     <h3 class="report-block__title"><?php echo get_the_title($report); ?></h3>
 
     <?php if (!empty($newdocuments)) : ?>

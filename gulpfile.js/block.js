@@ -106,7 +106,7 @@ async function developBlocks() {
   function runJsScript(path) {
     const block = blockNames.filter(name => path.includes(name))[0];
     console.log(`building ${block} script`);
-    blockJsScript(path, block, false);
+    blockJsScript(path, block, true);
   }
   jsWatcher.on('change', runJsScript);
 
