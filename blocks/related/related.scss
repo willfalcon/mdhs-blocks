@@ -10,10 +10,15 @@
     font-size: 2.6rem;
     padding: 1.2rem 3rem;
     color: black;
+    .cdhq-frontend & {
+      margin-bottom: 0;
+    }
   }
   &__items {
     list-style: none;
-    padding: 0 3rem 1.3rem;
+    // padding: 0 3rem 1.3rem;
+    // padding: 0 3rem 0;
+    padding: 0;
     margin-top: 0;
   }
   &__item {
@@ -21,10 +26,19 @@
     margin: 0;
     font-weight: $fw-bold;
     border-bottom: 1px solid $light-orange;
-    padding: 1.5rem 0;
+    &:last-child {
+      border: 0;
+    }
   }
   &__link {
     color: black;
     text-decoration: none;
+    padding: 1.5rem 3rem;
+    display: block;
+    transition: .15s;
+    .cdhq-frontend &:hover {
+      text-decoration: none;
+      background: darken($light-orange2, 3);
+    }
   }
 }

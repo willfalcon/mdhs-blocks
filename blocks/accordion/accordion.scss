@@ -28,6 +28,14 @@
   a {
     color: $blue; 
     text-decoration: underline;
+    &.wp-block-button__link {
+      color: white;
+      text-decoration: none;
+      &:hover {
+        background: darken($bright-blue, 5);
+        transition: .15s;
+      }
+    }  
   }
   .page-content & {
     padding-top: 4rem !important;
