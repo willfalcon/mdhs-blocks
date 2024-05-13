@@ -1,15 +1,30 @@
 <?php
-  $page_for_posts = get_option( 'page_for_posts' ); 
-  $cats = get_categories(array(
-    'parent' => 0
-  )); 
-  
+  $tax = get_field('taxonomy');
+  if (!$tax) {
+    $tax = 'category';
+  }
+
+  $cats = array();
+  if ($tax == 'category') {
+    $cats = get_categories(array(
+      'parent' => 0
+    )); 
+  } else {
+    $cats = get_terms(array(
+      'taxonomy' => $tax,
+    ));
+  }
+  $object = get_taxonomy($tax); 
+  $object_type = $object->object_type[0];
+  $type = get_post_type_object($object_type);
+  $top_level_link = get_post_type_archive_link($type->name);
+  $top_level_name = $tax == 'category' ? __('News', 'mdhs') : $type->label;
 ?>
 
 <div class="categories">
   <ul class="parent-sidebar-menu" data-level="0">
     <li class="menu-item">
-      <a href="<?php echo get_the_permalink( $page_for_posts ); ?>"><?php echo get_the_title( $page_for_posts ); ?></a>
+      <a href="<?= $top_level_link  ?>"><?= $top_level_name ?></a>
       <ul class="child-sidebar-menu" data-level="1">
         <?php foreach ($cats as $cat) : ?>
           <?php $child_cats = get_categories(array(

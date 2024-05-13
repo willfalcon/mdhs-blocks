@@ -1,0 +1,95 @@
+@import '../block-import';
+
+.video-playlist {
+  border: 1px solid $bright-blue;
+  padding: 0 1rem 1rem;
+  @include responsive {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+    "title title"
+    "video playlist"
+    "video controls";
+    &.video-expanded,
+    &.is-single {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, auto);
+      grid-template-areas:
+        "title"
+        "video"
+        "controls"
+        "playlist";
+    }
+    align-items: start;
+    gap: 1rem;
+  }
+  &__title {
+    grid-area: title;
+  }
+  &__video {
+    grid-area: video;
+  }
+  &__video-wrapper {
+    position: relative; 
+    padding-bottom: 56.25%; 
+    height: 0; 
+    overflow: hidden; 
+    max-width: 100%;
+    iframe {
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%;
+    }
+  }
+  &__playlist {
+    grid-area: playlist;
+    background: $lightest-blue;
+    border-radius: 6px;
+    overflow: hidden;
+    &-header {
+      background: $bright-blue;
+      color: $mint;
+      display: block;
+      padding: 1rem;
+      font-weight: $fw-bold;
+    }
+    button {
+      background: transparent;
+      text-align: left;
+      color: $dark;
+      font-weight: $fw-bold;
+      border-width: 0 0 1px;
+      border-color: $bright-blue;
+      padding: 1rem; 
+      cursor: pointer;
+      transition: .15s;
+      display: block;
+      &:hover {
+        background: darken($light-blue, 10);
+        color: darken($dark, 10);
+      }
+      &:last-child {
+        border-width: 0;
+      }
+      &.active {
+        background: $mint;
+      }
+    }
+  }
+  &__controls {
+    grid-area: controls;
+  }
+  &__expand {
+    .page-content & {
+      margin-bottom: 0;
+    }
+    display: flex;
+    transition: .15s;
+    &:hover {
+      background: lighten($bright-blue, 4);
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "cdhq/video-playlist",
+  "title": "Video Playlist",
+  "description": "List of videos in a playlist",
+  "style": "video-playlist-style",
+  "script": "video-playlist-script",
+  "category": "cdhq",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "video-playlist.php"
+  },
+  "supports": {
+    "align": true
+  },
+  "align": "full",
+  "icon": "images-alt2"
+}

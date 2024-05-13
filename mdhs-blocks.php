@@ -2,7 +2,7 @@
 /*
   Plugin Name: MDHS Blocks
   Description: Custom blocks for MDHS
-  Version: 1.0.9
+  Version: 1.1.0
   Author: Creative Distillery
   Author URI: https://creativedistillery.com
 */
