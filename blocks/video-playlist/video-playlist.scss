@@ -49,12 +49,21 @@
     background: $lightest-blue;
     border-radius: 6px;
     overflow: hidden;
+    position: relative; 
+    height: 100%;
     &-header {
       background: $bright-blue;
       color: $mint;
       display: block;
       padding: 1rem;
       font-weight: $fw-bold;
+    }
+    &-list {
+      height: 100%;
+      position: absolute;
+      width: 100%;
+    
+      overflow: scroll;
     }
     button {
       background: transparent;
