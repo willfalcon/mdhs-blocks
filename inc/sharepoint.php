@@ -19,10 +19,22 @@ function get_sp_access_token() {
     ));
 
     $body = json_decode(wp_remote_retrieve_body($response));
+    
+    if (property_exists($body, 'error')) {
+      if ($body->error == 'unauthorized_client') {
+        update_field('sp_token_error', "Client Secret error! Possibly, the client secret is expired.", 'options');
+      }
+      if ($body->error == 'invalid_client') {
+        update_field('sp_token_error', "Client Secret error! Sharepoint doesn't recognize this as a valid client secret. Make sure the right thing was copy/pasted, and that it was pasted exactly.", 'options');
+      }
+      return $body;
+    } else if (get_field('sp_token_error', 'options')) {
+      update_field('sp_token_error', null, 'options');
+      update_field('sp_access_token', $body->access_token, 'options');
+      update_field('sp_access_token_expires', time() + $body->expires_in, 'options');
+      return $body->access_token;
+    }
 
-    update_field('sp_access_token', $body->access_token, 'options');
-    update_field('sp_access_token_expires', time() + $body->expires_in, 'options');
-    return $body->access_token;
   } else {
     return get_field('sp_access_token', 'options');
   }
@@ -30,6 +42,10 @@ function get_sp_access_token() {
 
 function call_graph($endpoint, $v1 = false) {
   $access_token = get_sp_access_token();
+  
+  if (property_exists($access_token, 'error')) {
+    return $access_token;
+  }
 
   $base = $v1 ? 'https://mdhsmsgov-my.sharepoint.com/_api/web' : 'https://graph.microsoft.com/v1.0';
   $url =  $base . $endpoint;
@@ -64,6 +80,9 @@ function mdhsb_sp_get_table($data) {
   
   $sharepoint_columns = call_graph('\/sites/' . $site_id . '\/lists/' . $list_id. '/columns');
 
+  if (property_exists($sharepoint_columns, 'error')) {
+    return 'Something went wrong';
+  }
 
   global $columns;
   $columns = array_values(array_filter($sharepoint_columns->value, function($col) {
@@ -125,7 +144,11 @@ function mdhsb_set_sharepoint_column_options($field) {
 	
 	$field['choices'] = array();
 	$columns = call_graph('\/sites/' . $site_id . '\/lists/' . $list_id. '/columns');
+  if (property_exists($columns, 'error')) {
+    return $field;
+  }
 
+  // write_log($columns);
 	foreach($columns->value as $column) {
 		$field['choices'][$column->name] = $column->displayName;
 	}	
@@ -150,6 +173,11 @@ function mdhsb_check_sharepoint_settings() {
 
     $list_id = get_field('list_id', get_the_ID());
     $list = call_graph('\/sites/' . $site_id . '\/lists');
+    if (property_exists($list, 'error')) {
+      echo '<div class="notice notice-error">
+        <p>' . __('Sharepoint Error Client ', 'mdhs') . '</p>
+      </div>';
+    }
 
     if (property_exists($list, 'error') && $list->error->message == 'The provided path does not exist, or does not represent a site') {
       echo '<div class="notice notice-warning">
@@ -158,6 +186,17 @@ function mdhsb_check_sharepoint_settings() {
     }
     
   }
+
 }
 
 add_action('admin_notices', 'mdhsb_check_sharepoint_settings');
+
+function mdhsb_sharepoint_client_error_admin_notices() {
+  if (get_field('sp_token_error', 'options')) {
+    echo '<div class="notice notice-error">
+        <h3>Sharepoint Client Secret Error</h3>
+        <p>' . get_field('sp_token_error', 'options') . '</p>
+      </div>';
+  }
+}
+add_action('admin_notices', 'mdhsb_sharepoint_client_error_admin_notices');

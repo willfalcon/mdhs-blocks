@@ -5,7 +5,7 @@
   "viewScript": ["sharepoint-list-script"],
   "dependencies": {
     "style": ["tabulator-style"],
-    "script": ["luxon"]
+    "script": ["luxon", "jspdf", "jspdf-autotable", "wp-i18n"]
   },
   "category": "cdhq",
   "acf": {

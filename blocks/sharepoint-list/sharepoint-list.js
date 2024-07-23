@@ -1,5 +1,4 @@
 import { TabulatorFull as Tabulator } from 'tabulator-tables';
-
 // Tabulator
 
 function getSorter(data) {
@@ -58,7 +57,14 @@ async function initTable(wrapper) {
     const tableId = wrapper.dataset.table;
 
     const data = await fetch(`/wp-json/sharepoint/v1/table?id=${tableId}`).then(res => res.json());
-    // console.log(data);
+    console.log(data);
+    if (data === 'Something went wrong') {
+      wrapper.innerHTML = `<p style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">${wp.i18n.__(
+        'Something went wrong. Please try again later.'
+      )}</p>`;
+      return;
+    }
+
     const hideColumns = wrapper.dataset.hideColumns ? JSON.parse(wrapper.dataset.hideColumns) : null;
     // console.log(hideColumns);
     const hideColumnsArr = hideColumns?.map(col => col.sharepoint_column);
@@ -109,6 +115,22 @@ async function initTable(wrapper) {
         ]);
       }
     });
+
+    const downloadButton = document.querySelector(`#download-${tableId}`);
+    if (downloadButton) {
+      Tabulator.extendModule;
+      downloadButton.addEventListener('click', e => {
+        table.downloadToTab('pdf', 'Open Procurements.pdf', {
+          orientation: 'landscape',
+          title: 'Open Procurements',
+          autoTable: {
+            styles: {
+              minCellWidth: 50,
+            },
+          },
+        });
+      });
+    }
   }
 }
 
