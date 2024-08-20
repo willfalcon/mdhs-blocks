@@ -1,13 +1,25 @@
 import { TabulatorFull as Tabulator } from 'tabulator-tables';
 // Tabulator
 
-function getSorter(data) {
-  if (data.dateTime) {
-    return 'date';
+// Sorting parameters to be added to the Columns Array
+function getSorter({ sortable, data }) {
+  if (sortable) {
+    if (data.dateTime) {
+      return {
+        sorter: 'date',
+        sorterParams: {
+          format: 'iso',
+        },
+      };
+    }
+    return {
+      sorter: 'string',
+    };
   }
-  return 'string';
+  return {};
 }
 
+// Formatting parameters to be added to the columns array
 function format(data, longText, documentField, documentName) {
   if (data.dateTime) {
     return {
@@ -52,12 +64,15 @@ function format(data, longText, documentField, documentName) {
   return {};
 }
 
+// Init Table
 async function initTable(wrapper) {
   if (wrapper) {
     const tableId = wrapper.dataset.table;
 
     const data = await fetch(`/wp-json/sharepoint/v1/table?id=${tableId}`).then(res => res.json());
-    console.log(data);
+    // console.log(data);
+
+    // didn't fetch data for some reason
     if (data === 'Something went wrong') {
       wrapper.innerHTML = `<p style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">${wp.i18n.__(
         'Something went wrong. Please try again later.'
@@ -65,19 +80,24 @@ async function initTable(wrapper) {
       return;
     }
 
+    // filter out hidden columns, marked hidden in the table settings in WP.
     const hideColumns = wrapper.dataset.hideColumns ? JSON.parse(wrapper.dataset.hideColumns) : null;
     // console.log(hideColumns);
     const hideColumnsArr = hideColumns?.map(col => col.sharepoint_column);
     const filteredColumns = hideColumns
       ? data.mappedColumns.filter(col => !hideColumnsArr.includes(col.sharepoint_column))
       : data.mappedColumns;
+
+    // build out columns array with sorting and formatting info.
     const columns = filteredColumns.map(col => ({
       field: col.data.name,
       title: col.column_title || col.data.displayName,
-      sorter: col.sortable ? getSorter(col.data) : null,
+      // sorter: col.sortable ? getSorter(col.data) : null,
+      ...getSorter(col),
       ...format(col.data, col.long_text_field, col.document_field, col.document_name_column),
     }));
 
+    // Filter rows based on backend table setting filters
     const filters = wrapper.dataset.filters ? JSON.parse(wrapper.dataset.filters) : null;
 
     function filterRows(rows) {
@@ -90,6 +110,7 @@ async function initTable(wrapper) {
     const unfilteredRows = data.items.map(item => item.fields);
     const rows = filterRows(unfilteredRows);
 
+    // Setup table
     const table = new Tabulator(wrapper, {
       data: rows,
       columns: columns,
@@ -97,7 +118,14 @@ async function initTable(wrapper) {
     table.on('tableBuilt', () => {
       wrapper.classList.remove('loading');
     });
+    table.on('dataSorting', function (sorters) {
+      console.log(sorters);
+    });
+    table.on('dataSorted', function (sorters, rows) {
+      console.log(rows);
+    });
 
+    // Setup search box
     const searchColumns = data.mappedColumns.filter(col => col.include_in_search).map(col => col.sharepoint_column);
 
     const searchForm = document.querySelector(`.sharepoint-list-search[data-table="${tableId}"]`);
@@ -116,6 +144,7 @@ async function initTable(wrapper) {
       }
     });
 
+    // Setup download button
     const downloadButton = document.querySelector(`#download-${tableId}`);
     if (downloadButton) {
       Tabulator.extendModule;

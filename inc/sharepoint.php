@@ -28,12 +28,14 @@ function get_sp_access_token() {
         update_field('sp_token_error', "Client Secret error! Sharepoint doesn't recognize this as a valid client secret. Make sure the right thing was copy/pasted, and that it was pasted exactly.", 'options');
       }
       return $body;
-    } else if (get_field('sp_token_error', 'options')) {
-      update_field('sp_token_error', null, 'options');
+    } else {
+      if (get_field('sp_token_error', 'options')) {
+        update_field('sp_token_error', null, 'options');
+      }
       update_field('sp_access_token', $body->access_token, 'options');
       update_field('sp_access_token_expires', time() + $body->expires_in, 'options');
       return $body->access_token;
-    }
+    } 
 
   } else {
     return get_field('sp_access_token', 'options');
@@ -43,8 +45,11 @@ function get_sp_access_token() {
 function call_graph($endpoint, $v1 = false) {
   $access_token = get_sp_access_token();
   
-  if (property_exists($access_token, 'error')) {
-    return $access_token;
+  // write_log($access_token);
+  if (is_object($access_token)) {
+    if (property_exists($access_token, 'error')) {
+      return $access_token;
+    }
   }
 
   $base = $v1 ? 'https://mdhsmsgov-my.sharepoint.com/_api/web' : 'https://graph.microsoft.com/v1.0';
@@ -79,6 +84,7 @@ function mdhsb_sp_get_table($data) {
   }, $chosen_columns);
   
   $sharepoint_columns = call_graph('\/sites/' . $site_id . '\/lists/' . $list_id. '/columns');
+
 
   if (property_exists($sharepoint_columns, 'error')) {
     return 'Something went wrong';
