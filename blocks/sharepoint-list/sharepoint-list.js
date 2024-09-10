@@ -70,7 +70,6 @@ async function initTable(wrapper) {
     const tableId = wrapper.dataset.table;
 
     const data = await fetch(`/wp-json/sharepoint/v1/table?id=${tableId}`).then(res => res.json());
-    // console.log(data);
 
     // didn't fetch data for some reason
     if (data === 'Something went wrong') {
@@ -110,6 +109,8 @@ async function initTable(wrapper) {
     const unfilteredRows = data.items.map(item => item.fields);
     const rows = filterRows(unfilteredRows);
 
+    // console.log(rows);
+
     // Setup table
     const table = new Tabulator(wrapper, {
       data: rows,
@@ -117,12 +118,6 @@ async function initTable(wrapper) {
     });
     table.on('tableBuilt', () => {
       wrapper.classList.remove('loading');
-    });
-    table.on('dataSorting', function (sorters) {
-      console.log(sorters);
-    });
-    table.on('dataSorted', function (sorters, rows) {
-      console.log(rows);
     });
 
     // Setup search box

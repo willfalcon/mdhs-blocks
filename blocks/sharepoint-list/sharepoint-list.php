@@ -20,4 +20,4 @@
   data-table="<?php echo $sharepoint_table->ID; ?>" 
   data-filters="<?php if ($filters) : echo htmlspecialchars(json_encode($filters), ENT_QUOTES, 'UTF-8'); endif; ?>"
   data-hide-columns="<?php if ($hide_columns) : echo htmlspecialchars(json_encode($hide_columns), ENT_QUOTES, 'UTF-8'); endif; ?>"></div>
-<button class="sharepoint-list-download-button button" id="download-<?= $sharepoint_table->ID ?>">Open in New Tab</button>
+<span role="button" class="sharepoint-list-download-button" style="color: -webkit-link; text-decoration: underline; display: block; text-align: right; cursor: pointer;" id="download-<?= $sharepoint_table->ID ?>">Open in New Tab</span>
