@@ -1,0 +1,15 @@
+{
+  "name": "cdhq/location-alert",
+  "title": "Location Alert",
+  "style": "location-alert-style",
+  "category": "cdhq",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "location-alert.php"
+  },
+  "supports": {
+    "align": true
+  },
+  "align": "full",
+  "icon": "image-filter"
+}

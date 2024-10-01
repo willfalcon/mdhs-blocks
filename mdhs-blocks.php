@@ -24,15 +24,27 @@ function cdhq_add_block_category( $categories, $post ) {
 }
 add_filter( 'block_categories_all', 'cdhq_add_block_category', 10, 2);
 
+
+function cdhq_get_plugin_data($file) {
+	if( ! function_exists('get_plugin_data') ){
+		require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+	}
+	return get_plugin_data($file);
+}
+
+
+
 /**
  * Register all custom blocks for theme
  * Hooked into 'init'
  */
 
 function cdhq_register_blocks() {
+
 	$blocks = get_blocks();
 
-	$ver = get_plugin_data( plugin_dir_path( __FILE__ ) . 'mdhs-blocks.php' )['Version'];
+	$ver = cdhq_get_plugin_data( plugin_dir_path( __FILE__ ) . 'mdhs-blocks.php' )['Version'];
+	// $ver = '42';
 	$env = wp_get_environment_type();
 	$base = plugin_dir_path( __FILE__ ) . 'blocks/';
 	$is_dev = $env == 'development' || $env == 'local';
@@ -112,3 +124,4 @@ include_once(plugin_dir_path( __FILE__ ) . 'inc/utils.php');
 include_once(plugin_dir_path( __FILE__ ) . 'inc/smartsheet.php');
 include_once(plugin_dir_path( __FILE__ ) . 'inc/sharepoint.php');
 include_once(plugin_dir_path( __FILE__ ) . 'inc/api.php');
+include_once(plugin_dir_path( __FILE__ ) . 'inc/location-alerts.php');

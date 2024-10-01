@@ -1,0 +1,25 @@
+@import '../block-import';
+
+.location-alert {
+  &__list {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+  }
+  &__item {
+    border-bottom: 2px solid rgba($cobalt, .5);
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__location-name {}
+  &__status {
+    &::before {
+      font-weight: $fw-bold;
+    }
+    
+    color: $red;
+    font-weight: $fw-bold;
+  }
+}
